@@ -42,7 +42,7 @@ class Car
         }
     }
 
-    public Car() : this("Unknown", "Unknown", 2000)
+    public Car() : this("BMW", " 5 Series (E39)", 2000)
     {
     }
 
