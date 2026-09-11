@@ -2,19 +2,36 @@
 {
     private string brand;
     private string model;
+    private int year;
 
-    public int Year { get; set; }
+    public string Brand
+    {
+        get { return brand; }
+        set { brand = value; }
+    }
+
+    public string Model
+    {
+        get { return model; }
+        set { model = value; }
+    }
+
+    public int Year
+    {
+        get { return year; }
+        set { year = value; }
+    }
 
     public Car(string brand, string model, int year)
     {
         this.brand = brand;
         this.model = model;
-        Year = year;
+        this.year = year;
     }
 
     public void Drive()
     {
-        Console.WriteLine($"{Year} {brand} {model} їде по дорозі.");
+        Console.WriteLine($"{Year} {Brand} {Model} їде по дорозі.");
     }
 }
 
