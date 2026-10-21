@@ -62,6 +62,12 @@ dotnet test .\lab12v2.Tests\lab12v2.Tests.csproj
 - `Update` для існуючого та неіснуючого елемента;
 - `Delete` для існуючого та неіснуючого елемента.
 
+## Результат тестування
+
+Усі 8 тестів пройшли успішно (`Failed: 0`, `Passed: 8`, `Skipped: 0`).
+
+![Успішний запуск dotnet test](screenshots/tests-passed.png)
+
 ## Контрольні запитання
 
 ### 1. Яка роль `where`-обмежень у Generics?
