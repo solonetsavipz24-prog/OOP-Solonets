@@ -30,7 +30,7 @@ dotnet run
 
 ## Консольний вивід
 
-![Консольний вивід лабораторної роботи](screenshots/console-output.png)
+![Консольний вивід лабораторної роботи](screenshots/console-output.svg)
 
 ## Контрольні запитання
 
