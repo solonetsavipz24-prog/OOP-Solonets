@@ -2,7 +2,7 @@ using System;
 
 class Shape
 {
-    private string color;
+    private string color = string.Empty;
 
     public string Color
     {
