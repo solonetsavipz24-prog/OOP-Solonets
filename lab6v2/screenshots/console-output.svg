@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+  <rect width="900" height="520" rx="12" fill="#083847"/>
+  <style>
+    text { font-family: Consolas, 'Courier New', monospace; font-size: 20px; fill: #f4f4f4; }
+    .prompt { fill: #d8f3ff; }
+    .heading { fill: #ffffff; }
+  </style>
+  <text x="24" y="38" class="prompt">PS C:\Users\KIZYAK\Desktop\OOP-Solonets\lab6v2&gt; dotnet run</text>
+  <text x="24" y="78" class="heading">=== Об'єкти ===</text>
+  <text x="24" y="108">Базова фігура: колір = Білий, площа = 0,00</text>
+  <text x="24" y="138">Коло: колір = Червоний, радіус = 5, площа = 78,54</text>
+  <text x="24" y="168">Прямокутник: колір = Синій, 4 x 6, площа = 24,00</text>
+  <text x="24" y="218" class="heading">=== Унікальні методи похідних класів ===</text>
+  <text x="24" y="248">Малюємо коло кольору Червоний.</text>
+  <text x="24" y="278">Малюємо прямокутник кольору Синій.</text>
+  <text x="24" y="328" class="heading">=== Поліморфізм: virtual / override ===</text>
+  <text x="24" y="358">Circle: площа = 78,54</text>
+  <text x="24" y="388">Rectangle: площа = 24,00</text>
+  <text x="24" y="438" class="heading">=== Різниця між override та new ===</text>
+  <text x="24" y="468">Через Rectangle: Rectangle</text>
+  <text x="24" y="498">Через Shape:     Shape</text>
+</svg>
