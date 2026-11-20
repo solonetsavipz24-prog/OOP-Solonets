@@ -1,54 +1,68 @@
-var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
-var words = new List<string> { "C#", "delegates", "lambda", "LINQ" };
-var products = new List<Product>
+﻿using Lab9SelfV2;
+
+Console.WriteLine("===== COLLECTION UTILS =====");
+
+// Колекція 1: числа
+var numbers = new List<int> { 5, 2, 8, 1, 10 };
+
+Console.WriteLine("\n--- List<int> ---");
+
+var doubled = CollectionUtils.Map(numbers, n => n * 2);
+Console.WriteLine("Map: " + string.Join(", ", doubled));
+
+var maxNumber = CollectionUtils.MaxBy(numbers, n => n);
+Console.WriteLine($"MaxBy: {maxNumber}");
+
+var evenNumbers = CollectionUtils.Filter(numbers, n => n % 2 == 0);
+Console.WriteLine("Filter: " + string.Join(", ", evenNumbers));
+
+CollectionUtils.ForEach(numbers,
+    n => Console.WriteLine($"Число: {n}"));
+
+// Колекція 2: рядки
+var words = new List<string>
 {
-    new("Laptop", 25000m), new("Mouse", 500m), new("Keyboard", 1500m)
+    "Artem", "Rivne", "CSharp", "Git"
 };
 
-Console.WriteLine("Map numbers -> squares: " + string.Join(", ", CollectionUtils.Map(numbers, n => n * n)));
-Console.WriteLine("Filter even: " + string.Join(", ", CollectionUtils.Filter(numbers, n => n % 2 == 0)));
-Console.WriteLine("Map words -> lengths: " + string.Join(", ", CollectionUtils.Map(words, w => w.Length)));
-Console.WriteLine("Longest word: " + CollectionUtils.MaxBy(words, w => w.Length));
-var expensive = CollectionUtils.Filter(products, p => p.Price > 1000m);
-Console.WriteLine("Expensive products:");
-CollectionUtils.ForEach(expensive, p => Console.WriteLine($"- {p.Name}: {p.Price} грн"));
-var maxProduct = CollectionUtils.MaxBy(products, p => p.Price);
-Console.WriteLine($"Most expensive: {maxProduct.Name}");
+Console.WriteLine("\n--- List<string> ---");
 
-public record Product(string Name, decimal Price);
+var lengths = CollectionUtils.Map(words, w => w.Length);
+Console.WriteLine("Map: " + string.Join(", ", lengths));
 
-public static class CollectionUtils
+var longestWord = CollectionUtils.MaxBy(words, w => w.Length);
+Console.WriteLine($"MaxBy: {longestWord}");
+
+var longWords = CollectionUtils.Filter(words, w => w.Length >= 5);
+Console.WriteLine("Filter: " + string.Join(", ", longWords));
+
+CollectionUtils.ForEach(words,
+    w => Console.WriteLine(w.ToUpper()));
+
+// Колекція 3: товари
+var products = new List<Product>
 {
-    public static IEnumerable<TResult> Map<TSource, TResult>(IEnumerable<TSource> collection, Func<TSource, TResult> mapper)
-    {
-        var result = new List<TResult>();
-        foreach (var item in collection) result.Add(mapper(item));
-        return result;
-    }
+    new Product { Name = "Laptop", Price = 25000 },
+    new Product { Name = "Mouse", Price = 500 },
+    new Product { Name = "Keyboard", Price = 1500 }
+};
 
-    public static T MaxBy<T, TKey>(IEnumerable<T> collection, Func<T, TKey> keySelector) where TKey : IComparable<TKey>
-    {
-        using var enumerator = collection.GetEnumerator();
-        if (!enumerator.MoveNext()) throw new InvalidOperationException("Collection is empty.");
-        T maxItem = enumerator.Current;
-        TKey maxKey = keySelector(maxItem);
-        while (enumerator.MoveNext())
-        {
-            TKey key = keySelector(enumerator.Current);
-            if (key.CompareTo(maxKey) > 0) { maxKey = key; maxItem = enumerator.Current; }
-        }
-        return maxItem;
-    }
+Console.WriteLine("\n--- List<Product> ---");
 
-    public static IEnumerable<T> Filter<T>(IEnumerable<T> collection, Predicate<T> predicate)
-    {
-        var result = new List<T>();
-        foreach (var item in collection) if (predicate(item)) result.Add(item);
-        return result;
-    }
+var names = CollectionUtils.Map(products, p => p.Name);
+Console.WriteLine("Map: " + string.Join(", ", names));
 
-    public static void ForEach<T>(IEnumerable<T> collection, Action<T> action)
-    {
-        foreach (var item in collection) action(item);
-    }
-}
+var expensiveProduct = CollectionUtils.MaxBy(products, p => p.Price);
+Console.WriteLine($"MaxBy: {expensiveProduct.Name} - {expensiveProduct.Price} грн");
+
+var expensive = CollectionUtils.Filter(products, p => p.Price > 1000);
+
+Console.WriteLine("Filter:");
+CollectionUtils.ForEach(expensive,
+    p => Console.WriteLine($"- {p.Name}: {p.Price} грн"));
+
+Console.WriteLine("ForEach:");
+CollectionUtils.ForEach(products,
+    p => Console.WriteLine($"{p.Name}: {p.Price} грн"));
+
+Console.WriteLine("\nПрограму завершено успішно!");
